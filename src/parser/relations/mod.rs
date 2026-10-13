@@ -161,6 +161,9 @@ pub fn extract_relations_from_tree(
     source: &str,
     language: &str,
 ) -> Vec<ParsedRelation> {
+    if language == "gdscript" {
+        return super::gdscript::relations(tree, source);
+    }
     let mut relations = Vec::new();
     let config = LanguageConfig::for_language(language);
     // The Rust local-binding memo is keyed by tree-sitter node id, and ids are

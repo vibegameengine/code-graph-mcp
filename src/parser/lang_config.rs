@@ -86,6 +86,7 @@ impl LanguageConfig {
                     "javascript" => "javascript",
                     "go" => "go",
                     "python" => "python",
+                    "gdscript" => "gdscript",
                     "java" => "java",
                     "c" => "c",
                     "cpp" => "cpp",

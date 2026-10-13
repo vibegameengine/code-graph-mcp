@@ -7,6 +7,7 @@ pub fn get_language(name: &str) -> Option<Language> {
         "javascript" | "jsx" => Some(tree_sitter_javascript::LANGUAGE.into()),
         "go" => Some(tree_sitter_go::LANGUAGE.into()),
         "python" => Some(tree_sitter_python::LANGUAGE.into()),
+        "gdscript" => Some(tree_sitter_gdscript::LANGUAGE.into()),
         "rust" => Some(tree_sitter_rust::LANGUAGE.into()),
         "java" => Some(tree_sitter_java::LANGUAGE.into()),
         "c" => Some(tree_sitter_c::LANGUAGE.into()),

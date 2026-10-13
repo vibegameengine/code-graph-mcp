@@ -1,3 +1,4 @@
+mod gdscript;
 pub mod lang_config;
 pub mod languages;
 pub mod relations;

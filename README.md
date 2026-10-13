@@ -412,7 +412,7 @@ situation matches — there are no slash commands to remember:
 Both are thin routers over the CLI subcommands documented above, so anything a
 skill does is also runnable by hand.
 
-## Supported Languages (19)
+## Supported Languages (20)
 
 | Language | Extensions | Relations Extracted |
 |----------|-----------|-------------------|
@@ -420,6 +420,7 @@ skill does is also runnable by hand.
 | JavaScript | .js, .jsx, .mjs, .cjs | calls, imports, exports (ESM + CommonJS), inherits, routes_to, references |
 | Go | .go | calls, imports, inherits, routes_to, references |
 | Python | .py, .pyi | calls, imports, inherits, routes_to, references |
+| GDScript | .gd | direct calls and self calls; named functions/classes/signals/constants/member variables |
 | Rust | .rs | calls, imports, implements, routes_to (axum), references |
 | Java | .java | calls, imports, inherits, implements, references |
 | C# | .cs | calls, imports, inherits, implements |
@@ -435,6 +436,17 @@ skill does is also runnable by hand.
 | HTML | .html, .htm | file-FTS only (no AST symbols) |
 | CSS | .css | file-FTS only (no AST symbols) |
 | JSON | .json | file-FTS only (no AST symbols) |
+
+GDScript support in this fork uses Tree-sitter 6.1.0. Dynamic receivers, engine
+type resolution, signal connections and `.tscn` resource graphs are not resolved.
+Standalone parser fixtures and a fresh-repository CLI test cover indexing,
+signatures, direct calls, incremental renaming and deletion. This does not imply
+whole-session token savings.
+
+Build this fork with `cargo build --release` (FTS5) or
+`cargo build --release --features embed-model` (optional vector search). The
+upstream npm/plugin release does not acquire this fork's parser just because the
+source was pushed; use the executable built from this checkout.
 
 **Known limitations:**
 - **Rust has no `inherits` edges** — the language has no class inheritance, so `impl Trait for Type` is recorded as `implements` and an `inherits`-filtered query returns empty for Rust.

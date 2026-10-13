@@ -13,6 +13,7 @@ pub const SUPPORTED_LANGUAGES: &[&str] = &[
     "javascript",
     "go",
     "python",
+    "gdscript",
     "java",
     "c",
     "cpp",
@@ -56,6 +57,7 @@ pub fn detect_language(path: &str) -> Option<&'static str> {
         "js" | "jsx" | "mjs" | "cjs" => Some("javascript"),
         "go" => Some("go"),
         "py" | "pyi" => Some("python"),
+        "gd" => Some("gdscript"),
         "java" => Some("java"),
         "c" | "h" => Some("c"),
         // `.hh`/`.hxx` are common C++ header spellings; `.hxx` in particular

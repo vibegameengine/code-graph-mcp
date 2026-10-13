@@ -452,6 +452,9 @@ pub fn extract_nodes_from_tree(
     source: &str,
     language: &str,
 ) -> Vec<ParsedNode> {
+    if language == "gdscript" {
+        return super::gdscript::nodes(tree, source);
+    }
     let mut nodes = Vec::new();
     let config = LanguageConfig::for_language(language);
     let root = tree.root_node();
